@@ -51,8 +51,7 @@ def disable_inherit_unported_modules(conn, cr):
     not yet ported modules""")
     cr.execute("""
         UPDATE ir_ui_view
-        SET arch='<data/>',
-        arch_db='<data/>'
+        SET arch_db='<data/>'
         WHERE id in (
             SELECT iuv.id
             FROM ir_ui_view as iuv
@@ -76,7 +75,6 @@ def set_not_ported_modules_to_installed(conn, cr):
         WHERE state IN ('to install', 'to upgrade')
     """)
     conn.commit()
-
 
 
 def main():
